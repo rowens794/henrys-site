@@ -11,7 +11,7 @@ export default function Home() {
         <title>Henry&apos;s Minifigs</title>
         <meta
           name="description"
-          content="A Next.js starter styled with Tailwind CSS."
+          content="A Site all about selling crap (I mean good stuff)."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -22,7 +22,7 @@ export default function Home() {
         <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
           <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
             Get started by saying hi to
-            <code className="font-mono font-bold pl-2">Henry</code>
+            <code className="font-mono font-bold pl-2">Mary</code>
           </p>
           <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
             <a
@@ -46,7 +46,7 @@ export default function Home() {
 
         <div className="flex justify-center w-full">
           <Image
-            src="/henry.png"
+            src="/mary.png"
             alt="Henry's Minifigs"
             width={200}
             height={200}
@@ -60,7 +60,7 @@ export default function Home() {
             className="text-blue-600 dark:text-blue-400 hover:underline"
             href="https://nextjs.org"
           >
-            Henry&apos;s Website for Selling and Such
+            Mary&apos;s Website for Selling and Such
           </a>
         </h1>
 
@@ -133,7 +133,95 @@ export default function Home() {
             </p>
           </a>
         </div>
+
+        <Products />
       </main>
     </>
   );
 }
+
+const products = [
+  {
+    id: 1,
+    name: "Animal Pencils",
+    color: "Various Colors",
+    price: "75 cents",
+    href: "#",
+    imageSrc: "/AnimalPencils.jpg",
+    imageAlt: "Hand stitched, orange leather long wallet.",
+  },
+  // More products...
+  {
+    id: 2,
+    name: "Jumbo Pencil",
+    color: "Pencil Colored",
+    price: "$10",
+    href: "#",
+    imageSrc: "/Jumbo Pencil.jpg",
+    imageAlt: "Hand stitched, orange leather long wallet.",
+  },
+  {
+    id: 3,
+    name: "Wood Pencils",
+    color: "Wood Colored",
+    price: "$1.50",
+    href: "#",
+    imageSrc: "/wood pencils.jpg",
+    imageAlt: "Hand stitched, orange leather long wallet.",
+  },
+];
+
+const Products = () => {
+  return (
+    <div className="bg-black">
+      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <div className="md:flex md:items-center md:justify-between">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-100">
+            Cool Pencils
+          </h2>
+          <a
+            href="#"
+            className="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 md:block"
+          >
+            Shop the collection
+            <span aria-hidden="true"> &rarr;</span>
+          </a>
+        </div>
+
+        <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
+          {products.map((product) => (
+            <div key={product.id} className="group relative">
+              <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-72 xl:h-80">
+                <img
+                  src={product.imageSrc}
+                  alt={product.imageAlt}
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
+              <h3 className="mt-4 text-sm text-blue-300">
+                <a href={product.href}>
+                  <span className="absolute inset-0" />
+                  {product.name}
+                </a>
+              </h3>
+              <p className="mt-1 text-sm text-gray-100">{product.color}</p>
+              <p className="mt-1 text-sm font-medium text-gray-200">
+                {product.price}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 text-sm md:hidden">
+          <a
+            href="#"
+            className="font-medium text-indigo-600 hover:text-indigo-500"
+          >
+            Shop the collection
+            <span aria-hidden="true"> &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
